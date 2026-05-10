@@ -8,7 +8,7 @@ const AddDestinationPage = () => {
         const formData = new FormData(e.currentTarget);
         const destination = Object.fromEntries(formData.entries());
 
-        console.log("from data", destination);
+        // console.log("from data", destination);
 
 
         const res = await fetch('http://localhost:5000/destination', {
@@ -19,7 +19,9 @@ const AddDestinationPage = () => {
             body: JSON.stringify(destination)
         });
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
+
+        //toast here
     }
     return (
         <div className='p-5 max-w-7xl mx-auto'>
