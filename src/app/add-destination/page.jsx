@@ -23,6 +23,8 @@ const AddDestinationPage = () => {
 
         //toast here
     }
+
+    
     return (
         <div className='p-5 max-w-7xl mx-auto'>
             <h1 className='text-2xl font-bold'>Add Destination</h1>
