@@ -1,4 +1,5 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import { TrashBin } from '@gravity-ui/icons';
 import { AlertDialog, Button } from '@heroui/react';
 import React from 'react';
@@ -7,10 +8,15 @@ const BookingCancelAlert = ({ bookingId }) => {
 
     const handleCancelBooking = async () => {
 
+        //for jwt--------
+        const { data: tokenData } = await authClient.token();
+        // console.log(tokenData);
+
         const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
             method: "DELETE",
             headers: {
                 "content-type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`  // for jwt
             }
         })
 

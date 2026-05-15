@@ -11,14 +11,16 @@ import { LuMapPin } from 'react-icons/lu';
 const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
     // console.log(id);
+
+    // for jwt
     const {token} = await auth.api.getToken({
         headers: await headers()
     });
-    console.log(token);
+    // console.log(token);
 
     const res = await fetch(`http://localhost:5000/destination/${id}`, {
         headers: {
-            authorization: `Bearer ${token}`
+            authorization: `Bearer ${token}` // for jwt
         }
     });
     const destination = await res.json();

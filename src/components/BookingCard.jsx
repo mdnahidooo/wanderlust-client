@@ -28,15 +28,20 @@ const BookingCard = ({ destination }) => {
         }
         // console.log(bookingData);
 
+        //for jwt--------
+        const { data: tokenData } = await authClient.token();
+        // console.log(tokenData);
+
         const res = await fetch('http://localhost:5000/booking', {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`  // for jwt
             },
             body: JSON.stringify(bookingData)
         });
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
 
         toast.success("You booked successfully!")
     };
